@@ -1,0 +1,69 @@
+html{
+    --bg-color: #ffffff;
+    --text-color: #1a1a1a;
+    --card-bg: #f3f3f3;
+    --toggle-bg: #ccc;
+    transition: background 0,4s ease;
+}
+
+html:has(#theme-toggle:checked){
+    --bg-color: #000000;
+    --text-color: #e0e0e0;
+    --card-bg: #121212;
+    --toggle-bg: #333333;
+}
+body{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin:0 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Poppins' , sans-serif;
+    transition: background 0,4s ease, color 0,4s ease;
+}
+
+#theme-toggle{ display: none;}
+
+.container{
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+    transition: background 0,4s ease;
+}
+.toggle-switch{
+    width: 80px;
+    height: 40px;
+    background: var(--toggle-bg);
+    border-radius: 40px;
+    cursor: pointer;
+    position: relative;
+    margin: 20px auto 0;
+    display: flex;
+    align-items: center;
+    transition: background 0,4s ease;
+}
+.icon{
+    width: 32px;
+    height: 32px;
+    background: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    left: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.icon::after {content:'☀️' ;}
+
+#theme-toggle:checked + label .icon{
+    transform: translateX(40px);
+}
+#theme-toggle:checked + label .icon::after{
+    content:' 🌙';
+}
